@@ -1,0 +1,8 @@
+{
+  "name": "Simulador de Testes Universitários",
+  "description": "Simulador de exames e testes antigos de faculdade com replicação ipsis verbis de questões, avaliação imediata com feedback cromático e cálculo de nota final por disciplina.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

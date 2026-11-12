@@ -1,0 +1,94 @@
+Aqui tens a **chave de respostas certas para as 39 perguntas** do teu exame de Programação Geoespacial (SAPROG), explicadas de forma direta, simples e com o conhecimento essencial para saberes exatamente o porquê de cada resposta.
+
+---
+
+### **Perguntas 1 a 15 (Múltipla Escolha)**
+
+* **Pergunta 1:** **a** e **c**
+  * **Explicação:** A função `Describe` devolve propriedades sobre dados, variando consoante seja *shapefile*, *raster* ou *geodatabase*.
+* **Pergunta 2:** **c** e **d**
+  * **Explicação:** É boa prática criar dados temporários na memória (`in_memory`) e agrupar código repetido em funções.
+* **Pergunta 3:** **a** e **b**
+  * **Explicação:** O GDAL/OGR trabalha com vetores e *rasters*, e o sub-módulo `osr` gere projeções e sistemas de coordenadas.
+* **Pergunta 4:** **a** e **d**
+  * **Explicação:** O Shapely executa geoprocessamento vetorial avançado e importa/exporta geometrias no formato standard **WKT** (*Well-Known Text*).
+* **Pergunta 5:** **b** e **c**
+  * **Explicação:** Funções como `ListFeatureClasses` devolvem uma **lista** com os nomes dos ficheiros existentes no *workspace*.
+* **Pergunta 6:** **c** e **d**
+  * **Explicação:** Somar *string* com número dá **erro de tipo**, mas somar `3.14 + 2` soma normalmente os números.
+* **Pergunta 7:** **b**
+  * **Explicação:** Um **Dicionário** é uma coleção **mutável e não ordenada** acedida por **chaves**.
+* **Pergunta 8:** **c**
+  * **Explicação:** Uma **Lista** é uma coleção **ordenada e mutável** cujos elementos se acedem por **índices numéricos**.
+* **Pergunta 9:** **a**
+  * **Explicação:** Um **Tuplo** é **ordenado e imutável** (não se altera após a criação).
+* **Pergunta 10:** **b**
+  * **Explicação:** O `psycopg2` é o conector específico para comunicar com a base de dados **PostgreSQL / PostGIS**.
+* **Pergunta 11:** **a** e **b**
+  * **Explicação:** O Python é interpretado, de alto nível, orientado a objetos e corre sobre a **PVM** (*Python Virtual Machine*).
+* **Pergunta 12:** **d**
+  * **Explicação:** Os ciclos servem para **percorrer coleções** e repetir blocos de código.
+* **Pergunta 13:** **c**
+  * **Explicação:** Os cursores no ArcPy servem para **pesquisar, atualizar e inserir** linhas em tabelas/Feature Classes.
+* **Pergunta 14:** **a**
+  * **Explicação:** Em *Open Source*, a gestão de sistemas de coordenadas é feita por **`osr`** ou **`pyproj`**.
+* **Pergunta 15:** **c** (`<type 'int'>`)
+  * **Explicação:** Em Python 2.x, a divisão de dois inteiros (`1 / 2`) faz uma **divisão inteira** truncada a 0.
+
+---
+
+### **Perguntas 16 a 26 (Verdadeiro / Falso)**
+
+* **Pergunta 16:** **Verdadeiro**
+  * **Explicação:** Expandimos o Python instalando **módulos adicionais** (ArcPy, Shapely, GDAL).
+* **Pergunta 17:** **Verdadeiro**
+  * **Explicação:** O polimorfismo permite que o operador `+` some números ou junte *strings*.
+* **Pergunta 18:** **Falso**
+  * **Explicação:** O ArcPy é proprietário, mas **não impede** a utilização conjunta de bibliotecas *Open Source*.
+* **Pergunta 19:** **Verdadeiro**
+  * **Explicação:** Em *Open Source*, combinamos vários módulos para obter o fluxo completo de geoprocessamento.
+* **Pergunta 20:** **Falso**
+  * **Explicação:** O *workspace* do ArcPy define-se em `arcpy.env.workspace`, e não com o módulo `os`.
+* **Pergunta 21:** **Verdadeiro**
+  * **Explicação:** O método `deleteRow()` exige a utilização de um **`UpdateCursor`**.
+* **Pergunta 22:** **Falso**
+  * **Explicação:** Criar um `Point` exige apenas coordenadas `(x, y)`, não sendo necessário o `arcpy.Array`.
+* **Pergunta 23:** **Falso**
+  * **Explicação:** O `InsertCursor` serve apenas para inserir novas linhas, não aceitando cláusulas WHERE.
+* **Pergunta 24:** **Falso**
+  * **Explicação:** Bibliotecas como **Shapely** ou **GeoPandas** fazem geoprocessamento avançado na memória sem precisar de base de dados.
+* **Pergunta 25:** **Falso**
+  * **Explicação:** Na tipagem dinâmica **não se declara** o tipo da variável ao criá-la.
+* **Pergunta 26:** **Verdadeiro**
+  * **Explicação:** Uma variável pode começar como inteiro e depois passar a *string*.
+
+---
+
+### **Perguntas 27 a 39 (Múltipla Escolha e Código)**
+
+* **Pergunta 27:** **a** (`6.35` do tipo string)
+  * **Explicação:** A formatação com `%` produz sempre um resultado do tipo **`str`**.
+* **Pergunta 28:** **b**
+  * **Explicação:** As *strings* são **imutáveis**, pelo que tentar alterar um caractere por índice dá erro.
+* **Pergunta 29:** **c** e **d**
+  * **Explicação:** O ciclo `WHILE` testa uma **condição** e o `FOR` percorre uma **coleção**.
+* **Pergunta 30:** **a** e **c**
+  * **Explicação:** O controlo de erros em Python faz-se com o bloco **`try ... except`**.
+* **Pergunta 31:** **a** (`["Sunday", "Monday", "Wednesday"]`)
+  * **Explicação:** `del example` remove o elemento da posição 2 (o terceiro elemento, "Tuesday").
+* **Pergunta 32:** **a**, **c** e **d**
+  * **Explicação:** **União, Interseção e Diferença** são operações espaciais e de conjuntos válidas.
+* **Pergunta 33:** **b** (`{2, 3, 4, 5, 10}`)
+  * **Explicação:** A função `set()` elimina elementos duplicados e ordena o resultado entre **chaves** `{}`.
+* **Pergunta 34:** **b** e **d**
+  * **Explicação:** Uma variável global pode ser acedida em qualquer lado e é declarada com a instrução **`global`**.
+* **Pergunta 35:** **c** (Indentação)
+  * **Explicação:** O Python delimita os blocos de código através da **indentação** (espaços à esquerda).
+* **Pergunta 36:** **b** (`def executarCalculo(param1, param2)`)
+  * **Explicação:** As funções em Python definem-se com a palavra-chave **`def`**.
+* **Pergunta 37:** **a** e **c**
+  * **Explicação:** Usa-se **`#`** para comentários de uma linha e **`'''`** para comentários multilinha.
+* **Pergunta 38:** **d** (`4`)
+  * **Explicação:** A função `len()` conta o número total de elementos da lista (4 itens).
+* **Pergunta 39:** **b** (`-`)
+  * **Explicação:** **Não é possível subtrair *strings*** (o operador `-` dá erro).

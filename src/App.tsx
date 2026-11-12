@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Exam, DisciplineConfig, QuestionAnswerState } from './types/exam';
-import { SAMPLE_EXAMS } from './data/sampleExams';
+import { SAMPLE_EXAMS, getRandomEspacialExam } from './data/sampleExams';
 import { DEFAULT_DISCIPLINE_CONFIGS } from './data/defaultDisciplines';
 import { calculateSimulationScore } from './utils/gradeCalculator';
 import { Header } from './components/Header';
@@ -32,7 +32,7 @@ export default function App() {
       const saved = localStorage.getItem('simulador_discipline_config');
       if (saved) {
         const parsed = JSON.parse(saved);
-        if (parsed.id === 'saprog-python') return parsed;
+        if (parsed.id === 'saprog-python' || parsed.id === 'estatistica-espacial') return parsed;
       }
     } catch (e) {
       // ignore
@@ -47,6 +47,22 @@ export default function App() {
   // Modals
   const [isConfigModalOpen, setIsConfigModalOpen] = useState<boolean>(false);
   const [isUploadModalOpen, setIsUploadModalOpen] = useState<boolean>(false);
+
+  const handleSelectExamPreset = (presetKey: string) => {
+    if (presetKey === 'saprog') {
+      setCurrentExam(SAMPLE_EXAMS[0]);
+      const conf = DEFAULT_DISCIPLINE_CONFIGS.find((c) => c.id === 'saprog-python');
+      if (conf) setCurrentConfig(conf);
+    } else if (presetKey === 'estatistica') {
+      const espExam = getRandomEspacialExam();
+      setCurrentExam(espExam);
+      const conf = DEFAULT_DISCIPLINE_CONFIGS.find((c) => c.id === 'estatistica-espacial');
+      if (conf) setCurrentConfig(conf);
+    }
+    setAnswers({});
+    setIsExamSubmitted(false);
+    setCurrentQuestionIndex(0);
+  };
 
   // Calculate live score and summary whenever answers, exam, or config changes
   const summary = currentExam
@@ -202,6 +218,7 @@ export default function App() {
         setStudyMode={setStudyMode}
         currentGrade={summary.finalGrade}
         isCompleted={isExamSubmitted}
+        onSelectExamPreset={handleSelectExamPreset}
       />
 
       {/* Main Container */}

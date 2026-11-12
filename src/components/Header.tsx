@@ -21,6 +21,7 @@ interface Props {
   setStudyMode: (mode: 'instant' | 'exam') => void;
   currentGrade?: number;
   isCompleted?: boolean;
+  onSelectExamPreset: (presetKey: string) => void;
 }
 
 export const Header: React.FC<Props> = ({
@@ -33,7 +34,10 @@ export const Header: React.FC<Props> = ({
   setStudyMode,
   currentGrade,
   isCompleted,
+  onSelectExamPreset,
 }) => {
+  const isEspacial = currentExam?.subject.toLowerCase().includes('estatística');
+
   return (
     <header className="bg-white border-b border-slate-200 sticky top-0 z-30 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -93,6 +97,17 @@ export const Header: React.FC<Props> = ({
 
           {/* Right actions */}
           <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Chair Selector Dropdown */}
+            <select
+              value={isEspacial ? 'estatistica' : 'saprog'}
+              onChange={(e) => onSelectExamPreset(e.target.value)}
+              className="px-3 py-2 text-xs font-bold text-slate-800 bg-slate-50 hover:bg-slate-100 border border-slate-300 rounded-xl shadow-2xs focus:ring-2 focus:ring-indigo-500 focus:outline-none cursor-pointer"
+              title="Mudar de Cadeira / Teste"
+            >
+              <option value="saprog">💻 Programação Geoespacial (SAPROG)</option>
+              <option value="estatistica">📊 Estatística Espacial (30 Qs Aleatórias)</option>
+            </select>
+
             {/* Live Grade Preview badge */}
             {typeof currentGrade === 'number' && currentExam && (
               <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl">
@@ -118,10 +133,7 @@ export const Header: React.FC<Props> = ({
               title="Configurar escala e penalizações desta disciplina"
             >
               <Sliders className="w-4 h-4 text-slate-500" />
-              <span className="hidden sm:inline">Cotações:</span>
-              <span className="text-indigo-600 font-bold max-w-[100px] truncate">
-                {currentConfig.name.split('/')[0]}
-              </span>
+              <span className="hidden sm:inline">Cotações</span>
             </button>
 
             {/* Reset Exam Button */}
@@ -140,11 +152,11 @@ export const Header: React.FC<Props> = ({
             <button
               onClick={onOpenUploadModal}
               type="button"
-              className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 rounded-xl shadow-xs transition"
+              className="flex items-center gap-2 px-3 py-2 text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 rounded-xl shadow-xs transition"
+              title="Submeter PDF ou carregar outro teste"
             >
               <Upload className="w-4 h-4" />
-              <span className="hidden sm:inline">Submeter PDF</span>
-              <span className="sm:hidden">PDF</span>
+              <span className="hidden md:inline">PDF</span>
             </button>
           </div>
         </div>

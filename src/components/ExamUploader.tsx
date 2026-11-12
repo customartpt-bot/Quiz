@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Exam, DisciplineConfig } from '../types/exam';
-import { SAMPLE_EXAMS } from '../data/sampleExams';
+import { SAMPLE_EXAMS, getRandomEspacialExam } from '../data/sampleExams';
 import { parseExamLocally } from '../utils/localExamParser';
 import {
   Upload,
@@ -181,7 +181,11 @@ export const ExamUploader: React.FC<Props> = ({
   };
 
   const handleSelectSample = (sample: Exam) => {
-    onExamLoaded(sample);
+    let examToLoad = sample;
+    if (sample.subject.toLowerCase().includes('estatística')) {
+      examToLoad = getRandomEspacialExam();
+    }
+    onExamLoaded(examToLoad);
     onClose();
   };
 
